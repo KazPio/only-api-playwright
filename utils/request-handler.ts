@@ -140,7 +140,9 @@ export class RequestHandler {
         if (actualStatus !== expectStatus) {
             const logs = this.logger.getRecentLogs()
             const error = new Error(`Expected status ${expectStatus} but got ${actualStatus}\n\nRecent API Activity: \n${logs}`)
-            Error.captureStackTrace(error, callinMethod)
+            if (typeof (Error as any).captureStackTrace === 'function') {
+                (Error as any).captureStackTrace(error, callinMethod)
+            }
             throw error
         }
     }

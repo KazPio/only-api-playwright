@@ -101,12 +101,10 @@ The extended `expect` helpers include:
 Example:
 
 ```ts
-const response = await api
-  .path('/users')
-  .getRequest(200)
+const response = await api.path("/users").getRequest(200);
 
-await expect(response).shouldMatchSchema('user', 'GET_all_users')
-expect(response.users.length).shouldBeLessThanOrEqual(30)
+await expect(response).shouldMatchSchema("user", "GET_all_users");
+expect(response.users.length).shouldBeLessThanOrEqual(30);
 ```
 
 ## Schema Validation
@@ -132,14 +130,3 @@ This allows tests to write expressive API calls and assertions.
 - `playwright.config.ts` uses `baseURL: 'https://dummyjson.com/'`
 - `reporter` output includes HTML and JUnit reports
 - `tests/api-tests/user.spec.ts` demonstrates GET, POST, PUT, and schema assertions
-
-## Suggested Scripts
-
-You may add these scripts to `package.json` for convenience:
-
-```json
-"scripts": {
-  "test": "npx playwright test",
-  "test:report": "npx playwright show-report playwright-report"
-}
-```
